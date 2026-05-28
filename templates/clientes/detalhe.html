@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+{% block titulo %}{{ cliente.nome }} | LUMINA{% endblock %}
+
+{% block conteudo %}
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-tertiary-container": "#2a2a2a","on-secondary-fixed": "#2f004b","secondary": "#e4b5ff","on-primary": "#690006","surface-variant": "#353534","surface-container": "#201f1f","error": "#ffb4ab","background": "#131313","inverse-on-surface": "#313030","secondary-container": "#6a1b9a","error-container": "#93000a","surface-dim": "#131313","on-primary-container": "#5c0005","tertiary-fixed-dim": "#c8c6c5","surface-tint": "#ffb4ac","on-secondary-fixed-variant": "#6a1b9a","primary-container": "#ff544c","outline": "#ab8985","on-error-container": "#ffdad6","on-secondary-container": "#da9dff","surface-container-highest": "#353534","secondary-fixed": "#f4d9ff","on-tertiary-fixed": "#1b1b1c","on-secondary": "#4e0078","on-tertiary-fixed-variant": "#474746","inverse-surface": "#e5e2e1","tertiary": "#c8c6c5","on-primary-fixed": "#410002","on-primary-fixed-variant": "#93000d","primary-fixed-dim": "#ffb4ac","on-error": "#690005","primary": "#ffb4ac","inverse-primary": "#bb171c","surface-container-low": "#1c1b1b","surface-container-high": "#2a2a2a","on-surface": "#e5e2e1","on-tertiary": "#303030","outline-variant": "#5b403d","primary-fixed": "#ffdad6","on-surface-variant": "#e4beb9","surface-container-lowest": "#0e0e0e","on-background": "#e5e2e1","tertiary-container": "#929090","surface-bright": "#393939","tertiary-fixed": "#e5e2e1","surface": "#131313","secondary-fixed-dim": "#e4b5ff"
+        },
+        borderRadius: { "DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem" },
+        spacing: { "container-max": "1200px","gutter": "24px","section-padding-mobile": "64px","section-padding-desktop": "120px","base": "8px" },
+        fontFamily: { "label-caps": ["Inter"],"body-md": ["Inter"],"headline-md": ["Playfair Display"],"headline-lg": ["Playfair Display"],"display-lg-mobile": ["Playfair Display"],"display-lg": ["Playfair Display"],"button": ["Inter"],"body-lg": ["Inter"] },
+        fontSize: { "label-caps": ["12px", {"lineHeight": "16px","letterSpacing": "0.1em","fontWeight": "600"}],"body-md": ["16px", {"lineHeight": "24px","fontWeight": "400"}],"headline-md": ["32px", {"lineHeight": "40px","fontWeight": "600"}],"headline-lg": ["48px", {"lineHeight": "56px","fontWeight": "600"}],"display-lg-mobile": ["48px", {"lineHeight": "56px","fontWeight": "700"}],"display-lg": ["72px", {"lineHeight": "84px","letterSpacing": "-0.02em","fontWeight": "700"}],"button": ["14px", {"lineHeight": "20px","fontWeight": "600"}],"body-lg": ["18px", {"lineHeight": "28px","fontWeight": "400"}] }
+      }
+    }
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+  .purple-glow { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(106,27,154,0.15) 0%, rgba(18,18,18,0) 70%); z-index: -1; filter: blur(64px); }
+  .glass-card { background: #1E1E1E; border: 1px solid rgba(255,255,255,0.05); }
+  body { background-color: #131313; color: #e5e2e1; -webkit-font-smoothing: antialiased; }
+</style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+
+<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-on-surface/5">
+  <nav class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+    <div class="text-headline-md font-headline-md font-extrabold tracking-tighter text-on-surface">LUMINA</div>
+    <div class="hidden md:flex items-center gap-8">
+     <a class="nav-link text-label-caps font-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/">Home</a>
+      <a class="nav-link text-label-caps font-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/api/clientes/pagina">Clientes</a>
+      <a class="nav-link text-label-caps font-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/api/restaurantes/pagina">Restaurantes</a>
+      <a class="nav-link text-label-caps font-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/api/mesas/pagina">Mesas</a>
+      <a class="nav-link text-label-caps font-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/api/reservas/pagina">Reservas</a>
+      <a class="nav-link text-label-caps font-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="/api/itens-cardapio/pagina">Cardápio</a>
+    </div>
+    <button class="px-6 py-2 border border-primary text-primary text-button font-button hover:bg-primary/10 transition-all active:scale-95">Reserve</button>
+  </nav>
+</header>
+
+<main class="pt-32 pb-section-padding-desktop px-gutter max-w-container-max mx-auto relative">
+  <div class="purple-glow top-0 right-0"></div>
+  <div class="purple-glow bottom-0 left-[-100px]"></div>
+
+  <div class="mb-12">
+    <a class="group inline-flex items-center gap-2 text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-colors" href="/api/clientes/pagina">
+      <span class="material-symbols-outlined text-sm">arrow_back</span>
+      Voltar para lista de clientes
+    </a>
+  </div>
+
+  <section class="mb-16">
+    <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-4">{{ cliente.nome }}</h1>
+    <div class="h-1 w-24 bg-primary"></div>
+  </section>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter mb-20">
+    <div class="lg:col-span-2 glass-card p-10 flex flex-col justify-between">
+      <div>
+        <h2 class="text-label-caps font-label-caps text-primary mb-8">Informações de Contato</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
+          <div>
+            <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">CUSTOMER ID</p>
+            <p class="text-body-lg font-body-lg text-on-surface">#{{ cliente.id }}</p>
+          </div>
+          <div>
+            <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">NOME COMPLETO</p>
+            <p class="text-body-lg font-body-lg text-on-surface">{{ cliente.nome }}</p>
+          </div>
+          <div>
+            <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">EMAIL ADDRESS</p>
+            <p class="text-body-lg font-body-lg text-on-surface break-all">{{ cliente.email }}</p>
+          </div>
+          <div>
+            <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">PHONE NUMBER</p>
+            <p class="text-body-lg font-body-lg text-on-surface">{{ cliente.telefone }}</p>
+          </div>
+          <div>
+            <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">STATUS</p>
+            {% if cliente.ativo %}
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-900/30 text-green-400">
+              <span class="w-1.5 h-1.5 rounded-full mr-1.5 bg-green-400"></span>Ativo
+            </span>
+            {% else %}
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-900/30 text-red-400">
+              <span class="w-1.5 h-1.5 rounded-full mr-1.5 bg-red-400"></span>Inativo
+            </span>
+            {% endif %}
+          </div>
+          <div>
+            <p class="text-label-caps font-label-caps text-on-surface-variant mb-1">TOTAL DE RESERVAS</p>
+            <p class="text-body-lg font-body-lg text-on-surface">{{ reservas|length }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-12 flex gap-4">
+        <a href="/api/clientes/pagina" class="border border-surface-variant text-on-surface-variant px-8 py-3 text-button font-button hover:bg-white/5 transition-all inline-flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">arrow_back</span>
+          Voltar
+        </a>
+      </div>
+    </div>
+
+    <div class="relative h-[400px] lg:h-auto overflow-hidden">
+      <img class="w-full h-full object-cover"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjzvvmvytJu1rd0dmsbFIaeOH9wcyZjGxb3ewl7SF7ArwA1G1Zqlg3l2FMYXNkUL6Wyl2aHs7yWrrfi1SnyoAlbk5hEif8v-gcEirC6BrN_TLfzj-rgrb2O4hmkiBrZpxxxyhKtAMTpWtxGIAp8CvKZbLWPzF8U3OjyKOEp9ljg6oItdBoIvwN7dlEfSn0tLxu-joxUQQpQkpmjsknpxCfjXf46ob6k1X6rtYKhM8Jz5yBwk25-cLw5l6SxT-kxWK1I-Fnax94KmA"
+        alt="Experiência gourmet LUMINA"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+      <div class="absolute bottom-8 left-8">
+        <p class="text-label-caps font-label-caps text-primary">PREMIUM MEMBER</p>
+        <p class="font-headline-md text-headline-md text-on-surface italic">Lumina Gold</p>
+      </div>
+    </div>
+  </div>
+  <section class="space-y-8">
+    <div class="flex items-end justify-between border-b border-on-surface/10 pb-4">
+      <h2 class="font-headline-lg text-headline-lg text-on-surface">Reservas deste cliente</h2>
+      <p class="text-label-caps font-label-caps text-on-surface-variant mb-2">Total: {{ reservas|length }} reserva(s)</p>
+    </div>
+
+    <div class="glass-card overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-surface-container-high">
+              <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant border-b border-surface-variant">ID</th>
+              <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant border-b border-surface-variant">DATA</th>
+              <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant border-b border-surface-variant">HORA</th>
+              <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant border-b border-surface-variant">PESSOAS</th>
+              <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant border-b border-surface-variant">MESA</th>
+              <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant border-b border-surface-variant">RESTAURANTE</th>
+              <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant border-b border-surface-variant">STATUS</th>
+              <th class="px-6 py-5 font-label-caps text-label-caps text-on-surface-variant border-b border-surface-variant text-right">AÇÕES</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-surface-variant/30">
+            {% for r in reservas %}
+            <tr class="group hover:bg-white/[0.02] transition-colors duration-300">
+              <td class="px-6 py-5 font-body-md text-body-md text-on-surface-variant font-mono">#{{ r.id }}</td>
+              <td class="px-6 py-5 font-body-md text-body-md text-on-surface">{{ r.data }}</td>
+              <td class="px-6 py-5 font-body-md text-body-md text-on-surface">{{ r.hora }}</td>
+              <td class="px-6 py-5 font-body-md text-body-md text-on-surface">{{ r.pessoas }}</td>
+              <td class="px-6 py-5 font-body-md text-body-md text-on-surface-variant">
+                Mesa {{ r.mesa_numero }}
+                <span class="text-xs text-on-surface-variant/60 ml-1">(cap. {{ r.capacidade }})</span>
+              </td>
+              <td class="px-6 py-5 font-body-md text-body-md text-on-surface-variant">{{ r.restaurante_nome }}</td>
+              <td class="px-6 py-5">
+                {% set status_lower = r.status | lower %}
+                {% if status_lower == 'confirmada' or status_lower == 'confirmed' %}
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-900/30 text-green-400">
+                  <span class="w-1.5 h-1.5 rounded-full mr-1.5 bg-green-400"></span>{{ r.status }}
+                </span>
+                {% elif status_lower == 'cancelada' or status_lower == 'cancelled' %}
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-900/30 text-red-400">
+                  <span class="w-1.5 h-1.5 rounded-full mr-1.5 bg-red-400"></span>{{ r.status }}
+                </span>
+                {% elif status_lower == 'concluida' or status_lower == 'completed' %}
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-on-tertiary-container/60 text-on-surface-variant">
+                  <span class="w-1.5 h-1.5 rounded-full mr-1.5 bg-on-surface-variant/50"></span>{{ r.status }}
+                </span>
+                {% else %}
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-secondary-container/30 text-on-secondary-container">
+                  <span class="w-1.5 h-1.5 rounded-full mr-1.5 bg-secondary/50"></span>{{ r.status }}
+                </span>
+                {% endif %}
+              </td>
+              <td class="px-6 py-5 text-right">
+                <a href="/api/reservas/pagina/{{ r.id }}"
+                  class="inline-flex items-center text-primary hover:text-white transition-colors gap-1 font-button text-button">
+                  Ver <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+                </a>
+              </td>
+            </tr>
+            {% else %}
+            <tr>
+              <td colspan="8" class="px-6 py-16 text-center text-on-surface-variant font-body-md text-body-md">
+                <span class="material-symbols-outlined text-4xl block mb-3 opacity-30">event_busy</span>
+                Nenhuma reserva encontrada para este cliente.
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-surface-container-lowest border-t border-surface-variant w-full py-section-padding-desktop">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter max-w-container-max mx-auto">
+    <div class="flex flex-col gap-6">
+      <div class="text-headline-lg font-headline-lg text-on-surface">LUMINA</div>
+      <p class="text-on-surface-variant max-w-xs">Curating exclusive culinary moments for the world's most discerning palates.</p>
+      <p class="text-label-caps font-label-caps text-on-surface-variant mt-4 uppercase">© 2024 LUMINA CULINARY GROUP. ALL RIGHTS RESERVED.</p>
+    </div>
+    <div class="flex flex-col gap-4">
+      <h3 class="text-label-caps font-label-caps text-primary">RESOURCES</h3>
+      <nav class="flex flex-col gap-2">
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Us</a>
+      </nav>
+    </div>
+    <div class="flex flex-col gap-4">
+      <h3 class="text-label-caps font-label-caps text-primary">LOCATIONS</h3>
+      <nav class="flex flex-col gap-2">
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">New York</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">London</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Tokyo</a>
+      </nav>
+    </div>
+    <div class="flex flex-col gap-6">
+      <h3 class="text-label-caps font-label-caps text-primary">NEWSLETTER</h3>
+      <div class="space-y-4">
+        <input class="w-full bg-[#0A0A0A] border border-[#333] px-4 py-3 text-on-surface focus:border-primary focus:ring-0 outline-none transition-colors" placeholder="ENTER YOUR EMAIL" type="email"/>
+        <button class="w-full bg-primary text-on-primary font-button py-3 text-button hover:opacity-90 transition-opacity">SUBSCRIBE</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+      header.classList.add('bg-background/95', 'shadow-2xl');
+      header.classList.remove('bg-background/80');
+    } else {
+      header.classList.remove('bg-background/95', 'shadow-2xl');
+      header.classList.add('bg-background/80');
+    }
+  });
+
+  document.querySelectorAll('tbody tr').forEach(row => {
+    row.addEventListener('mouseenter', () => { row.style.transform = 'translateX(4px)'; row.style.transition = 'transform 0.3s cubic-bezier(0.2,0,0,1)'; });
+    row.addEventListener('mouseleave', () => { row.style.transform = 'translateX(0)'; });
+  });
+</script>
+{% endblock %}

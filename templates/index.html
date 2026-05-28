@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block titulo %}Início | LUMINA{% endblock %}
+
+{% block conteudo %}
+
+<header class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwTnXL0ihDARfcozWCumYtUaL5OWHBMqkI3hdTF8OZ9IIUHJ3mWInMgQJ_K4konQeSJbrYwYmpe-QXR4CSUUKm0x53sApJuoeMTfy4XvtrAAhOOP3lKnxhk3DSP8y4fgxr4yhy4LtUf3oQQ8Knxex1OP3wRXP81G1OZK6uSBpZ2nYaxr2hAc-1c3IhGV6RxNobVc00OP5oesOeO01rHG0hAm-bYDY1fjGo0by8WR9IERJeBrfP2VU-qrpf-QSWaIil2WBfP_Zeu8M"
+      alt="Lumina Restaurant Interior" class="w-full h-full object-cover opacity-60"/>
+    <div class="absolute inset-0 bg-black/40"></div>
+    <div class="absolute bottom-0 left-0 w-full h-1/2 hero-gradient"></div>
+  </div>
+  <div class="container mx-auto px-gutter relative z-10">
+    <div class="max-w-3xl">
+      <p class="text-label-caps font-label-caps text-primary uppercase tracking-widest mb-6">Sistema de Reserva de Mesas</p>
+      <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6">
+        Experiência Gastronômica <span class="italic text-primary">Inesquecível</span>
+      </h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+        Descubra o prazer de reservar sua mesa favorita com apenas alguns cliques. Conforto, exclusividade e os melhores sabores esperam por você.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="/api/reservas/pagina" class="bg-primary text-on-primary px-8 py-4 font-button text-button hover:opacity-90 transition-opacity">Reservar Agora</a>
+        <a href="/api/itens-cardapio/pagina" class="border border-secondary/30 text-on-surface px-8 py-4 font-button text-button hover:bg-white/5 transition-all">Explorar Cardápio</a>
+      </div>
+    </div>
+  </div>
+  <div class="absolute -right-20 top-1/4 w-96 h-96 purple-glow rounded-full pointer-events-none"></div>
+</header>
+
+<section class="py-section-padding-desktop bg-surface-container-lowest">
+  <div class="container mx-auto px-gutter">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-primary font-label-caps text-label-caps uppercase tracking-widest mb-4 block">Navegação</span>
+      <h2 class="font-headline-lg text-headline-lg text-on-surface">Páginas do Sistema</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+
+      <a href="/api/clientes/pagina" class="glass-card p-8 group hover:border-primary/30 transition-all duration-300 block">
+        <div class="w-12 h-12 bg-secondary-container/40 flex items-center justify-center mb-6 group-hover:bg-secondary-container/70 transition-colors">
+          <span class="material-symbols-outlined text-secondary">group</span>
+        </div>
+        <h3 class="text-body-lg font-bold text-on-surface mb-2">Clientes</h3>
+        <p class="text-on-surface-variant text-body-md mb-6">Gerencie os clientes cadastrados na plataforma.</p>
+        <span class="inline-flex items-center gap-1 text-primary font-button text-button group-hover:gap-2 transition-all">
+          Acessar <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+        </span>
+      </a>
+
+      <a href="/api/restaurantes/pagina" class="glass-card p-8 group hover:border-primary/30 transition-all duration-300 block">
+        <div class="w-12 h-12 bg-secondary-container/40 flex items-center justify-center mb-6 group-hover:bg-secondary-container/70 transition-colors">
+          <span class="material-symbols-outlined text-secondary">restaurant</span>
+        </div>
+        <h3 class="text-body-lg font-bold text-on-surface mb-2">Restaurantes</h3>
+        <p class="text-on-surface-variant text-body-md mb-6">Veja e gerencie as unidades da rede LUMINA.</p>
+        <span class="inline-flex items-center gap-1 text-primary font-button text-button group-hover:gap-2 transition-all">
+          Acessar <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+        </span>
+      </a>
+
+      <a href="/api/mesas/pagina" class="glass-card p-8 group hover:border-primary/30 transition-all duration-300 block">
+        <div class="w-12 h-12 bg-secondary-container/40 flex items-center justify-center mb-6 group-hover:bg-secondary-container/70 transition-colors">
+          <span class="material-symbols-outlined text-secondary">table_restaurant</span>
+        </div>
+        <h3 class="text-body-lg font-bold text-on-surface mb-2">Mesas</h3>
+        <p class="text-on-surface-variant text-body-md mb-6">Consulte disponibilidade e capacidade das mesas.</p>
+        <span class="inline-flex items-center gap-1 text-primary font-button text-button group-hover:gap-2 transition-all">
+          Acessar <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+        </span>
+      </a>
+
+      <a href="/api/reservas/pagina" class="glass-card p-8 group hover:border-primary/30 transition-all duration-300 block">
+        <div class="w-12 h-12 bg-secondary-container/40 flex items-center justify-center mb-6 group-hover:bg-secondary-container/70 transition-colors">
+          <span class="material-symbols-outlined text-secondary">calendar_month</span>
+        </div>
+        <h3 class="text-body-lg font-bold text-on-surface mb-2">Reservas</h3>
+        <p class="text-on-surface-variant text-body-md mb-6">Acompanhe e gerencie todas as reservas ativas.</p>
+        <span class="inline-flex items-center gap-1 text-primary font-button text-button group-hover:gap-2 transition-all">
+          Acessar <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+        </span>
+      </a>
+
+      <a href="/api/itens-cardapio/pagina" class="glass-card p-8 group hover:border-primary/30 transition-all duration-300 block">
+        <div class="w-12 h-12 bg-secondary-container/40 flex items-center justify-center mb-6 group-hover:bg-secondary-container/70 transition-colors">
+          <span class="material-symbols-outlined text-secondary">restaurant_menu</span>
+        </div>
+        <h3 class="text-body-lg font-bold text-on-surface mb-2">Cardápio</h3>
+        <p class="text-on-surface-variant text-body-md mb-6">Itens disponíveis no cardápio da plataforma.</p>
+        <span class="inline-flex items-center gap-1 text-primary font-button text-button group-hover:gap-2 transition-all">
+          Acessar <span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>      
+    </div>
+  </div>
+</section>
+
+{% endblock %}
